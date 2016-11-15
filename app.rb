@@ -41,6 +41,9 @@ post '/visit' do
 			return erb :visit
   		 end
   		end
+    ##@error = hh.select {|key,_ | params[key] == ""}.values.join(",")
+  	## if @error != ''
+  	##return erb :visit
 
 	#if @username == ''
 		#@error = 'Введите имя'
@@ -70,6 +73,7 @@ post '/visit' do
 end
 
 
+
 post '/contacts' do 
 	@user_mail = params[:user_email]
 	@user_message = params[:user_message]
@@ -84,4 +88,5 @@ post '/contacts' do
 
 	erb :message
 end
+
 
