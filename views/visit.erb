@@ -42,7 +42,7 @@
          <div class="form-group">
       <label >Color</label>
    
-      <select name="colorpicker">
+      <select id= "color" name="color">
         <option value="#7bd148">Green</option>
         <option value="#5484ed">Bold blue</option>
         <option value="#a4bdfc">Blue</option>
@@ -66,8 +66,9 @@
 </form>
 
 <script type="text/javascript">
-$('select[name="colorpicker"]').simplecolorpicker();
-
+$ (function(){
+  $('#color').simplecolorpicker();
+});
 </script>
 
 </body>
