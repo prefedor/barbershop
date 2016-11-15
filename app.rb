@@ -28,21 +28,35 @@ post '/visit' do
 	@barber = params[:barber]
 	@color = params[:color]
 
-	if @username == ''
-		@error = 'Введите имя'
-	end
 
-	if @phone == ''
-		@error = 'Введите номер телефона'
-	end
+    hh = {:username => 'Введите имя', 
+    	  :phone => 'Введите номер телефона',
+    	  :date => 'Неправильная дата-время'}
+#для каждрй пары ключ значение
+    hh.each do |key, value|
+		if params[key] == ''
+	#переменной еррор присвоить значение из хэша хх
+			@error = hh[key]
+#вернуть представление в взит
+			return erb :visit
+  		 end
+  		end
 
-	if @date == ''
-		@error = 'Неправильная дата-время'
-	end
+	#if @username == ''
+		#@error = 'Введите имя'
+	#end
 
-	if @error == ''
-		return erb :visit
-	end
+	#if @phone == ''
+		#@error = 'Введите номер телефона'
+	#end
+
+	#if @date == ''
+		#@error = 'Неправильная дата-время'
+	#end
+
+	#if @error == ''
+		#return erb :visit
+	#end
 
 
 	@title = 'Thank You!'
