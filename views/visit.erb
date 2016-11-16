@@ -27,17 +27,17 @@
 
    <div class="form-group">
     <label >Phonenumber</label>
-    <input name="phone" type="text" class="form-control" placeholder="Enter your phonenumber" alue="<%=@phone%>>
+    <input name="phone" type="text" class="form-control" placeholder="Enter your phonenumber" value="<%=@phone%>">
   </div>
 
  	<div class="form-group">
     <label >Chose yor barber</label>
   	  <select class="form-control" name="barber">
-		  <option>Mike</option>
-		  <option>Wall Smith</option>
-		  <option>Jerry Marry</option>
-		  <option>FRank Jones</option>
-      </select>
+		  <option <%= @barber == 'Mike' ? 'selected' : ''%> > Mike</option>
+		  <option <%= @barber == 'Wall Smith' ? 'selected' : ''%> >Wall Smith</option>
+		  <option <%= @barber == 'Jerry Marry' ? 'selected' : '' %> > Jerry Marry</option>
+		  <option <%= @barber == 'FRank Jones' ? 'selected' : '' %> >FRank Jones</option>
+      </select> 
 
          <div class="form-group">
       <label >Color</label>
