@@ -4,18 +4,25 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+
+
 configure do #инициализация базы данных скьюлайт
-	@db = SQLite3::Database.new 'barbershop.db'
-	@db.execute 'CREATE TABLE IF NOT EXISTS
+	db=get_db
+	db.execute 'CREATE TABLE IF NOT EXISTS
 	"Users" 
 	("ID" INTEGER PRIMARY KEY AUTOINCREMENT, 
-	 "Name" VARCHAR, 
-	 "Phone" VARCHAR, 
-	 "Date" VARCHAR, 
-	 "Barber" VARCHAR,
-	  "Color" VARCHAR
+	 "username" TEXT, 
+	 "phone" TEXT, 
+	 "datestamp" TEXT, 
+	 "barber" TEXT,
+	 "color" TEXT
 	  )'
 end
+
+def get_db
+	return SQLite3::Database.new 'barbershop.db'
+end
+   
 
 get '/' do
 	erb "Hello!!! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
@@ -47,13 +54,13 @@ post '/visit' do
     	  :date => 'Неправильная дата-время'}
 #для каждрй пары ключ значение
     hh.each do |key, value|
-		if params[key] == ''
+			if params[key] == ''
 	#переменной еррор присвоить значение из хэша хх
-			@error = hh[key]
+				@error = hh[key]
 #вернуть представление в взит
-			return erb :visit
-  		 end
-  		end
+				return erb :visit
+  		 	end
+  	end
     ##@error = hh.select {|key,_ | params[key] == ""}.values.join(",")
   	## if @error != ''
   	##return erb :visit
@@ -74,6 +81,15 @@ post '/visit' do
 		#return erb :visit
 	#end
 
+# записываем в базу данных введенные в форме на странице визит значения
+ 	db=get_db
+	db.execute 'insert into 
+	    Users
+		(
+			username, phone, datestamp, barber, color
+		)
+		values (?, ?, ?, ?, ?)', [@username, @phone, @date, @barber, @color]
+ 
 
 	@title = 'Thank You!'
 	@message ="Dear #{@username}, we'll be waiting for you at #{@date}"
