@@ -12,7 +12,6 @@
 <h2> Choose your visit time </h2>
 
 
-
 <form action="/visit" method="POST" role="form">
 
   <div class="form-group">
@@ -22,7 +21,7 @@
 
    <div class="form-group">
     <label >Visit day and time</label>
-    <input  name="date" type="text" class="form-control" placeholder="Enter the date of your visit and time (dd/mm/yy hh/mm)" value="<%=@date%>">
+    <input id="datetimepicker"  type="text" name="date" class="form-control" placeholder="Enter the date of your visit and time (dd/mm/yy hh/mm)" value="<%=@date%>">
   </div>
 
    <div class="form-group">
@@ -66,10 +65,13 @@
 </form>
 
 <script type="text/javascript">
-$ (function(){
+$(function(){
   $('#color').simplecolorpicker();
+  $('#datetimepicker').datetimepicker();
+  
 });
 </script>
+
 
 </body>
 

@@ -4,7 +4,9 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
-
+def get_db
+	return SQLite3::Database.new 'barbershop.db'
+end
 
 configure do #инициализация базы данных скьюлайт
 	db=get_db
@@ -19,9 +21,7 @@ configure do #инициализация базы данных скьюлайт
 	  )'
 end
 
-def get_db
-	return SQLite3::Database.new 'barbershop.db'
-end
+
    
 
 get '/' do
