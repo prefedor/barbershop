@@ -126,16 +126,12 @@ post '/contacts' do
 end
 
 get '/showusers' do 
-	# get_db
-	# db.execute 'select * from Users' do |row|
+     db =get_db
+	
+	@results = db.execute 'select * from Users order by id desc' 
 	# print row['username']
 	# print "\t-\t"
 	# puts row['datestamp']
 	# puts '==============' 
 	erb :showusers
 end
-
-
-
-
-
