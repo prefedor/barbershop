@@ -70,6 +70,17 @@ get '/contacts' do
 erb :contacts
 end
 
+get '/showusers' do 
+     db =get_db
+	
+	@results = db.execute 'select * from Users order by id desc' 
+	# print row['username']
+	# print "\t-\t"
+	# puts row['datestamp']
+	# puts '==============' 
+	erb :showusers
+end
+
 # #get '/showusers' do
 #   erb :showusers
 # end
@@ -151,13 +162,3 @@ post '/contacts' do
 	erb :message
 end
 
-get '/showusers' do 
-     db =get_db
-	
-	@results = db.execute 'select * from Users order by id desc' 
-	# print row['username']
-	# print "\t-\t"
-	# puts row['datestamp']
-	# puts '==============' 
-	erb :showusers
-end
