@@ -24,6 +24,11 @@ def get_db
 	return db
 end
 
+before do
+	db=get_db
+	@barbers = db.execute 'select * from Barbers '
+end
+
 configure do #инициализация базы данных скьюлайт
 	db=get_db
 	db.execute 'CREATE TABLE IF NOT EXISTS
@@ -57,6 +62,7 @@ erb :about
 end
 
 get '/visit' do
+
 erb :visit
 end
 
