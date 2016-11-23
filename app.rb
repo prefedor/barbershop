@@ -44,9 +44,9 @@ get '/contacts' do
 erb :contacts
 end
 
-get '/showusers' do
-  erb "Hello World"
-end
+# #get '/showusers' do
+#   erb :showusers
+# end
 
 post '/visit' do 
 	@username = params[:username]
@@ -124,5 +124,18 @@ post '/contacts' do
 
 	erb :message
 end
+
+get '/showusers' do 
+	get_db
+	db.execute 'select * from Users' do |row|
+	print row['username']
+	print "\t-\t"
+	puts row['datestamp']
+	puts '==============' 
+	erb :showusers
+end
+
+end
+
 
 
