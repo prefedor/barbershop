@@ -32,4 +32,10 @@ User: wer,
  Color #7bd148 User: dfgg,
  Phone: dfgfgfg date_time% dfgfg 
  Barber Wall Smith 
- Color #51b749 
+ Color #51b749 User: erer,
+ Phone: erer date_time% erer 
+ Barber Mike 
+ Color #46d6db User: f,
+ Phone: fff date_time% fff 
+ Barber Jerry Marry 
+ Color #7bd148 
